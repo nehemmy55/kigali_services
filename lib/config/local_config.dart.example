@@ -1,0 +1,47 @@
+// Local Firebase Configuration Template
+// COPY this file to local_config.dart and fill in your own values
+// DO NOT commit local_config.dart to version control!
+
+class LocalConfig {
+  // Web Firebase Config
+  static const String webApiKey = 'YOUR_WEB_API_KEY';
+  static const String webAppId = 'YOUR_WEB_APP_ID';
+  static const String webMessagingSenderId = 'YOUR_SENDER_ID';
+  static const String webProjectId = 'YOUR_PROJECT_ID';
+  static const String webAuthDomain = 'YOUR_AUTH_DOMAIN';
+  static const String webStorageBucket = 'YOUR_STORAGE_BUCKET';
+  static const String webMeasurementId = 'YOUR_MEASUREMENT_ID';
+
+  // Android Firebase Config
+  static const String androidApiKey = 'YOUR_ANDROID_API_KEY';
+  static const String androidAppId = 'YOUR_ANDROID_APP_ID';
+  static const String androidMessagingSenderId = 'YOUR_SENDER_ID';
+  static const String androidProjectId = 'YOUR_PROJECT_ID';
+  static const String androidStorageBucket = 'YOUR_STORAGE_BUCKET';
+
+  // iOS Firebase Config
+  static const String iosApiKey = 'YOUR_IOS_API_KEY';
+  static const String iosAppId = 'YOUR_IOS_APP_ID';
+  static const String iosMessagingSenderId = 'YOUR_SENDER_ID';
+  static const String iosProjectId = 'YOUR_PROJECT_ID';
+  static const String iosStorageBucket = 'YOUR_STORAGE_BUCKET';
+  static const String iosBundleId = 'YOUR_BUNDLE_ID';
+
+  // macOS Firebase Config
+  static const String macosApiKey = 'YOUR_MACOS_API_KEY';
+  static const String macosAppId = 'YOUR_MACOS_APP_ID';
+  static const String macosMessagingSenderId = 'YOUR_SENDER_ID';
+  static const String macosProjectId = 'YOUR_PROJECT_ID';
+  static const String macosStorageBucket = 'YOUR_STORAGE_BUCKET';
+  static const String macosBundleId = 'YOUR_BUNDLE_ID';
+
+  // Windows Firebase Config
+  static const String windowsApiKey = 'YOUR_WINDOWS_API_KEY';
+  static const String windowsAppId = 'YOUR_WINDOWS_APP_ID';
+  static const String windowsMessagingSenderId = 'YOUR_SENDER_ID';
+  static const String windowsProjectId = 'YOUR_PROJECT_ID';
+  static const String windowsAuthDomain = 'YOUR_AUTH_DOMAIN';
+  static const String windowsStorageBucket = 'YOUR_STORAGE_BUCKET';
+  static const String windowsMeasurementId = 'YOUR_MEASUREMENT_ID';
+}
+
