@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "1019314046926",
+    "project_id": "kigali-services-6d7e1",
+    "storage_bucket": "kigali-services-6d7e1.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1019314046926:android:26eaf46a886e8bcf418d9f",
+        "android_client_info": {
+          "package_name": "com.example.kigali_services"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCx5WbETp5LPDuZb1Si6fOGApulFMHeACM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
