@@ -1,4 +1,4 @@
-# Miscellaneous
+or # Miscellaneous
 *.class
 *.log
 *.pyc
@@ -48,3 +48,11 @@ app.*.map.json
 /ios/*
 /windows/*
 /linux/*
+
+# Environment variables
+.env
+
+# Local config (contains sensitive API keys)
+lib/config/local_config.dart
+
+
