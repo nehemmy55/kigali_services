@@ -1,0 +1,30 @@
+{
+  "flutter": {
+    "platforms": {
+      "android": {
+        "default": {
+          "projectId": "kigali-services-6d7e1",
+          "appId": "1:1019314046926:android:26eaf46a886e8bcf418d9f",
+          "fileOutput": "android/app/google-services.json"
+        }
+      },
+      "dart": {
+        "lib/firebase_options.dart": {
+          "projectId": "kigali-services-6d7e1",
+          "configurations": {
+            "android": "1:1019314046926:android:26eaf46a886e8bcf418d9f",
+            "ios": "1:1019314046926:ios:1059d8f40e73c37a418d9f",
+            "macos": "1:1019314046926:ios:1059d8f40e73c37a418d9f",
+            "web": "1:1019314046926:web:46623b8c8e323aed418d9f",
+            "windows": "1:1019314046926:web:b164c890b2b91f6c418d9f"
+          }
+        }
+      }
+    }
+  },
+  "firestore": {
+    "rules": "firestore.rules",
+    "indexes": "firestore.indexes.json"
+  }
+}
+
