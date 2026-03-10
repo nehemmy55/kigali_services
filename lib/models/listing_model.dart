@@ -14,7 +14,7 @@ class ListingModel {
   final String createdBy;
   final DateTime timestamp;
 
-  // Distance from user (calculated locally, not stored in Firestore)
+  // Distance from user
   double? distanceKm;
 
   ListingModel({
@@ -31,10 +31,8 @@ class ListingModel {
     this.distanceKm,
   });
 
-  /// Get LatLng location
   LatLng get location => LatLng(latitude, longitude);
 
-  /// Calculate distance from user location
   void calculateDistance(LatLng? userLocation) {
     if (userLocation == null) {
       distanceKm = null;
@@ -108,7 +106,7 @@ class ListingModel {
   }
 }
 
-/// Canonical category constants used across the whole app.
+// category constants used across the whole app.
 class ListingCategory {
   static const String hospital = 'Hospital';
   static const String policeStation = 'Police Station';
@@ -121,7 +119,6 @@ class ListingCategory {
   static const String governmentOffice = 'Government Office';
   static const String pharmacy = 'Pharmacy';
   static const String school = 'School';
-  // Additional Kigali-specific services
   static const String bank = 'Bank';
   static const String atm = 'ATM';
   static const String supermarket = 'Supermarket';
@@ -159,10 +156,10 @@ class ListingCategory {
     mosque,
   ];
 
-  /// Same as [all] but exposed as a method for easy access
+  // Same as all but exposed as a method for easy access
   static List<String> get categories => all;
 
-  /// Get category icon
+  // Get category icon
   static IconData getCategoryIcon(String category) {
     switch (category) {
       case hospital:
@@ -209,7 +206,7 @@ class ListingCategory {
     }
   }
 
-  /// Get category color
+  // Get category color
   static Color getCategoryColor(String category) {
     switch (category) {
       case hospital:
