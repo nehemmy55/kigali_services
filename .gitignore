@@ -102,3 +102,6 @@ temp.dart
 *~
 /config/local_config.dart
 lib/firebase_options.dart
+
+# Large binary files
+*.vsix
