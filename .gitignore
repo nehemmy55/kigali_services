@@ -98,6 +98,11 @@ temp.dart
 .vscode/
 *.code-workspace
 *.swp
+
+# Sensitive configuration files
+lib/config/local_config.dart
+lib/firebase_options.dart
+firebase.json
 *.swo
 *~
 /config/local_config.dart
