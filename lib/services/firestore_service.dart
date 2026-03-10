@@ -7,11 +7,8 @@ class FirestoreService {
 
   static const String _listingsCollection = 'listings';
 
-  // ---------------------------------------------------------------------------
-  // Real-time streams
-  // ---------------------------------------------------------------------------
-
-  /// Stream of ALL listings ordered by timestamp descending.
+  
+  //display of ALL listings ordered by timestamp descending.
   Stream<List<ListingModel>> getAllListings() {
     return _db
         .collection(_listingsCollection)
@@ -24,7 +21,6 @@ class FirestoreService {
         );
   }
 
-  /// Stream of listings created by a specific user.
   Stream<List<ListingModel>> getUserListings(String uid) {
     return _db
         .collection(_listingsCollection)
@@ -38,39 +34,37 @@ class FirestoreService {
         );
   }
 
-  // ---------------------------------------------------------------------------
-  // CRUD
-  // ---------------------------------------------------------------------------
 
-  /// Create a new listing and return its generated ID.
+  
+   
+
+  // Create a new listing and return its generated ID.
   Future<String> createListing(ListingModel listing) async {
     final docRef =
         await _db.collection(_listingsCollection).add(listing.toMap());
     return docRef.id;
   }
 
-  /// Update an existing listing identified by [id].
+  //Update an existing listing identified by [id].
   Future<void> updateListing(String id, ListingModel listing) async {
     await _db.collection(_listingsCollection).doc(id).update(listing.toMap());
   }
 
-  /// Delete a listing by [id].
+  // Delete a listing by [id].
   Future<void> deleteListing(String id) async {
     await _db.collection(_listingsCollection).doc(id).delete();
   }
 
-  /// Fetch a single listing snapshot by [id].
+  //Fetch a single listing snapshot by [id].
   Future<ListingModel?> getListing(String id) async {
     final doc = await _db.collection(_listingsCollection).doc(id).get();
     if (!doc.exists) return null;
     return ListingModel.fromMap(doc.data()!, doc.id);
   }
 
-  // ---------------------------------------------------------------------------
-  // Reviews
-  // ---------------------------------------------------------------------------
+  
 
-  /// Stream of reviews for a specific listing.
+  // display  of reviews for a specific listing.
   Stream<List<ReviewModel>> getListingReviews(String listingId) {
     return _db
         .collection('reviews')
@@ -84,11 +78,9 @@ class FirestoreService {
     await _db.collection('reviews').doc(review.id).set(review.toMap());
   }
 
-  // ---------------------------------------------------------------------------
-  // Bookmarks
-  // ---------------------------------------------------------------------------
+ 
 
-  /// Stream of bookmarks for a specific user.
+  // sshow of bookmarks for a specific user.
   Stream<List<BookmarkModel>> getUserBookmarks(String userId) {
     return _db
         .collection('bookmarks')
@@ -117,7 +109,7 @@ class FirestoreService {
     return s.docs.isNotEmpty;
   }
 
-  /// Calculate average rating for a listing based on its reviews.
+  //Calculate average rating for a listing based on its reviews.
   Future<double> getAverageRating(String listingId) async {
     final reviews = await _db
         .collection('reviews')
@@ -135,7 +127,7 @@ class FirestoreService {
     return totalRating / reviews.docs.length;
   }
 
-  /// Get the count of reviews for a listing.
+  // Get the count of reviews for a listing.
   Future<int> getReviewCount(String listingId) async {
     final reviews = await _db
         .collection('reviews')

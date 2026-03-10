@@ -86,7 +86,7 @@ class _SignupScreenState extends State<SignupScreen> {
                   ),
                 ),
                 const SizedBox(height: 28),
-                // Display name (optional)
+                // Display name
                 TextFormField(
                   controller: _nameCtrl,
                   textInputAction: TextInputAction.next,

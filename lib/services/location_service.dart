@@ -2,7 +2,7 @@ import 'package:geolocator/geolocator.dart';
 import 'package:latlong2/latlong.dart';
 
 class LocationService {
-  /// Get current user location
+  // Get current user location
   static Future<LatLng?> getCurrentLocation() async {
     try {
       // Check if location services are enabled
@@ -40,15 +40,17 @@ class LocationService {
   /// Calculate distance between two points in kilometers
   static double calculateDistance(LatLng from, LatLng to) {
     return Geolocator.distanceBetween(
-      from.latitude,
-      from.longitude,
-      to.latitude,
-      to.longitude,
-    ) / 1000; // Convert to km
+          from.latitude,
+          from.longitude,
+          to.latitude,
+          to.longitude,
+        ) /
+        1000; // Convert to km
   }
 
   /// Calculate distance from user location to a listing
-  static double? getDistanceFromUser(LatLng? userLocation, LatLng listingLocation) {
+  static double? getDistanceFromUser(
+      LatLng? userLocation, LatLng listingLocation) {
     if (userLocation == null) return null;
     return calculateDistance(userLocation, listingLocation);
   }
@@ -57,16 +59,15 @@ class LocationService {
   static Future<bool> requestLocationPermission() async {
     try {
       LocationPermission permission = await Geolocator.checkPermission();
-      
+
       if (permission == LocationPermission.denied) {
         permission = await Geolocator.requestPermission();
       }
-      
-      return permission == LocationPermission.whileInUse || 
-             permission == LocationPermission.always;
+
+      return permission == LocationPermission.whileInUse ||
+          permission == LocationPermission.always;
     } catch (e) {
       return false;
     }
   }
 }
-

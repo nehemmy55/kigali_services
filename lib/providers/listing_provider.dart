@@ -28,9 +28,8 @@ class ListingProvider extends ChangeNotifier {
   ListingProvider({ListingRepository? repository})
       : _repository = repository ?? ListingRepository();
 
-  // ---------------------------------------------------------------------------
   // Getters
-  // ---------------------------------------------------------------------------
+
   bool get isLoading => _isLoading;
   String? get errorMessage => _errorMessage;
   String get searchQuery => _searchQuery;
@@ -41,9 +40,8 @@ class ListingProvider extends ChangeNotifier {
   List<ListingModel> get allListings => _allListings;
   List<ListingModel> get myListings => _myListings;
 
-  /// Get listings sorted by distance (nearest first)
+  //Get listings sorted by distance
   List<ListingModel> get nearestListings {
-    // First update distances
     _updateDistances();
 
     // Sort by distance
@@ -59,7 +57,6 @@ class ListingProvider extends ChangeNotifier {
 
   /// Filtered listings for the Directory screen.
   List<ListingModel> get filteredListings {
-    // Update distances first
     _updateDistances();
 
     return _allListings.where((l) {
@@ -72,7 +69,7 @@ class ListingProvider extends ChangeNotifier {
     }).toList();
   }
 
-  /// Get nearest listings (sorted by distance)
+  // Get nearest listings (sorted by distance)
   List<ListingModel> get filteredNearestListings {
     final filtered = filteredListings;
     filtered.sort((a, b) {
@@ -84,37 +81,32 @@ class ListingProvider extends ChangeNotifier {
     return filtered;
   }
 
-  /// Update distances for all listings
   void _updateDistances() {
     for (var listing in _allListings) {
       listing.calculateDistance(_userLocation);
     }
   }
 
-  /// Set user location and recalculate distances
+  // Set user location and recalculate distances
   void setUserLocation(LatLng? location) {
     _userLocation = location;
     _updateDistances();
     notifyListeners();
   }
 
-  /// Set loading state for location
+  // Set loading state for location
   void setLoadingLocation(bool loading) {
     _isLoadingLocation = loading;
     notifyListeners();
   }
 
-  // ---------------------------------------------------------------------------
-  // Stream Subscriptions
-  // ---------------------------------------------------------------------------
-
-  /// Start listening to all listings. Call once on app startup.
+  // Start listening to all listings. Call once on app startup.
   void subscribeAllListings() {
     _allListingsSubscription?.cancel();
     _allListingsSubscription = _repository.getAllListings().listen(
       (listings) {
         _allListings = listings;
-        // Update distances when new listings arrive
+
         _updateDistances();
         notifyListeners();
       },
@@ -125,7 +117,7 @@ class ListingProvider extends ChangeNotifier {
     );
   }
 
-  /// Start listening to a specific user's listings.
+  // Start listening to a specific user's listings.
   void subscribeMyListings(String uid) {
     _myListingsSubscription?.cancel();
     _myListingsSubscription = _repository.getUserListings(uid).listen(

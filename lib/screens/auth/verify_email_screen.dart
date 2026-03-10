@@ -17,7 +17,7 @@ class _VerifyEmailScreenState extends State<VerifyEmailScreen> {
   @override
   void initState() {
     super.initState();
-    // Auto-check verification status every 3 seconds
+    // Autocheck verification status every 3 seconds
     _timer = Timer.periodic(const Duration(seconds: 3), (_) {
       if (mounted) {
         context.read<ap.AuthProvider>().checkEmailVerification();

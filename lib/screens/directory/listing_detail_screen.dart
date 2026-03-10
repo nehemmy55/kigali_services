@@ -38,7 +38,7 @@ class ListingDetailScreen extends StatelessWidget {
         foregroundColor: Colors.white,
         elevation: 0,
         actions: [
-          // Bookmark button - only show if logged in
+          // Bookmark button only show if logged in
           if (auth.currentUid != null)
             IconButton(
               icon: Icon(

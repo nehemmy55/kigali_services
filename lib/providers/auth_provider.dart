@@ -26,9 +26,8 @@ class AuthProvider extends ChangeNotifier {
     _init();
   }
 
-  // ---------------------------------------------------------------------------
   // Getters
-  // ---------------------------------------------------------------------------
+
   AuthStatus get status => _status;
   User? get firebaseUser => _firebaseUser;
   UserModel? get userProfile => _userProfile;
@@ -37,14 +36,12 @@ class AuthProvider extends ChangeNotifier {
   String? get currentUid => _firebaseUser?.uid;
   bool get isEmailVerified => _firebaseUser?.emailVerified ?? false;
 
-  // ---------------------------------------------------------------------------
   // Initialisation
-  // ---------------------------------------------------------------------------
+
   void _init() {
     _authSubscription = _authService.authStateChanges.listen(
       _onAuthStateChanged,
       onError: (e) {
-        // Handle auth state errors gracefully
         _status = AuthStatus.authenticated;
         _userProfile = null;
         notifyListeners();
@@ -59,18 +56,17 @@ class AuthProvider extends ChangeNotifier {
       _userProfile = null;
     } else {
       _status = AuthStatus.authenticated;
-      // Load profile in background - don't crash if it fails
+
       try {
         _userProfile = await _authService.getUserProfile(user.uid);
       } catch (e) {
-        // Profile fetch failed - continue without profile
         _userProfile = null;
       }
     }
     notifyListeners();
   }
 
-  /// Reload the Firebase user to sync emailVerified status.
+  // Reload the Firebase user to sync emailVerified status.
   Future<void> checkEmailVerification() async {
     try {
       _errorMessage = null;
@@ -84,7 +80,6 @@ class AuthProvider extends ChangeNotifier {
     }
   }
 
-  /// Send verification email manually.
   Future<void> resendVerificationEmail() async {
     try {
       _errorMessage = null;
@@ -96,9 +91,8 @@ class AuthProvider extends ChangeNotifier {
     }
   }
 
-  // ---------------------------------------------------------------------------
   // Auth operations
-  // ---------------------------------------------------------------------------
+
   Future<bool> signUp({
     required String email,
     required String password,
@@ -111,7 +105,7 @@ class AuthProvider extends ChangeNotifier {
         password: password,
         displayName: displayName,
       );
-      // State will update via stream
+      // State will update
       return true;
     } on FirebaseAuthException catch (e) {
       _setError(_mapFirebaseError(e));
@@ -140,9 +134,6 @@ class AuthProvider extends ChangeNotifier {
     await _authService.signOut();
   }
 
-  // ---------------------------------------------------------------------------
-  // Helpers
-  // ---------------------------------------------------------------------------
   void _setLoading() {
     _status = AuthStatus.loading;
     _errorMessage = null;

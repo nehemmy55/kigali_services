@@ -269,7 +269,6 @@ class _MapViewScreenState extends State<MapViewScreen> {
                 ),
               ),
 
-              // Listing count
               Positioned(
                 bottom: 24,
                 left: 16,

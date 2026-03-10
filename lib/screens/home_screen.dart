@@ -88,7 +88,7 @@ class _HomeScreenState extends State<HomeScreen> {
       ),
       body: Consumer2<ListingProvider, InteractionProvider>(
         builder: (context, listingProvider, interactionProvider, _) {
-          // Get nearest listings (sorted by distance)
+          // Get nearest listings
           final listings = listingProvider.filteredNearestListings;
 
           return CustomScrollView(
@@ -166,7 +166,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 ),
               ),
 
-              // Section header - Nearest services
+              // Section headerNearest services
               SliverToBoxAdapter(
                 child: Padding(
                   padding: const EdgeInsets.fromLTRB(16, 16, 16, 8),

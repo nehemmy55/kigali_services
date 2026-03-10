@@ -20,23 +20,18 @@ class InteractionProvider extends ChangeNotifier {
   bool get isLoading => _isLoading;
   String? get errorMessage => _errorMessage;
 
-  /// Get average ratings map for all listings
   Map<String, double> get ratings => _ratingCache;
 
-  /// Get review counts map for all listings
   Map<String, int> get reviewCounts => _reviewCountCache;
 
-  /// Get average rating for a listing from cache
   double getAverageRating(String listingId) {
     return _ratingCache[listingId] ?? 0.0;
   }
 
-  /// Get review count for a listing from cache
   int getReviewCount(String listingId) {
     return _reviewCountCache[listingId] ?? 0;
   }
 
-  /// Check if a listing is bookmarked
   bool isBookmarked(String listingId) {
     return _userBookmarks.any((b) => b.listingId == listingId);
   }
@@ -60,15 +55,13 @@ class InteractionProvider extends ChangeNotifier {
     });
   }
 
-  /// Refresh bookmarks from Firestore
+  // Refresh bookmarks from Firestore
   Future<void> refreshBookmarks(String userId) async {
     try {
       final bookmarks = await _db.getUserBookmarks(userId).first;
       _userBookmarks = bookmarks;
       notifyListeners();
-    } catch (e) {
-      // Ignore errors
-    }
+    } catch (e) {}
   }
 
   Future<bool> addReview(ReviewModel review) async {
@@ -94,7 +87,7 @@ class InteractionProvider extends ChangeNotifier {
           _userBookmarks.where((b) => b.listingId == listingId).toList();
       if (existing.isNotEmpty) {
         await _db.removeBookmark(existing.first.id);
-        // Remove from local list immediately
+
         _userBookmarks.removeWhere((b) => b.id == existing.first.id);
       } else {
         final bookmark = BookmarkModel(
@@ -104,7 +97,7 @@ class InteractionProvider extends ChangeNotifier {
           timestamp: DateTime.now(),
         );
         await _db.addBookmark(bookmark);
-        // Add to local list immediately
+
         _userBookmarks.add(bookmark);
       }
       notifyListeners();
@@ -114,7 +107,7 @@ class InteractionProvider extends ChangeNotifier {
     }
   }
 
-  /// Load ratings for a list of listing IDs (called on app start)
+  // Load ratings for a list of listing IDs
   Future<void> loadRatingsForListings(List<String> listingIds) async {
     for (final listingId in listingIds) {
       if (!_ratingCache.containsKey(listingId)) {
@@ -127,7 +120,7 @@ class InteractionProvider extends ChangeNotifier {
     notifyListeners();
   }
 
-  /// Refresh rating for a specific listing (called after adding a review)
+  // Refresh rating for a specific listing
   Future<void> refreshRating(String listingId) async {
     final rating = await _db.getAverageRating(listingId);
     final count = await _db.getReviewCount(listingId);

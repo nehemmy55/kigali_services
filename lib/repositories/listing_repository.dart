@@ -1,13 +1,13 @@
 import '../models/listing_model.dart';
 import '../services/firestore_service.dart';
 
-/// Repository layer: mediates between the state layer and the service layer.
-/// Translates low-level Firestore errors into user-friendly messages.
+// mediates between the state layer and the service layer.
+
 class ListingRepository {
   final FirestoreService _service;
 
   ListingRepository({FirestoreService? service})
-    : _service = service ?? FirestoreService();
+      : _service = service ?? FirestoreService();
 
   Stream<List<ListingModel>> getAllListings() {
     return _service.getAllListings();

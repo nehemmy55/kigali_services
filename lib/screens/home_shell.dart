@@ -23,7 +23,7 @@ class _HomeShellState extends State<HomeShell> {
 
   void _navigateToDirectory() {
     setState(() {
-      _currentIndex = 1; // Index of ReviewsScreen
+      _currentIndex = 1;
     });
   }
 
@@ -51,7 +51,6 @@ class _HomeShellState extends State<HomeShell> {
       final authProvider = context.read<ap.AuthProvider>();
       final interactionProvider = context.read<InteractionProvider>();
 
-      // Subscribe to all listings
       listingProvider.subscribeAllListings();
 
       // Get user location
