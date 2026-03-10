@@ -92,7 +92,7 @@ class KigaliServicesApp extends StatelessWidget {
   }
 }
 
-/// Listens to [AuthProvider] and routes to the correct screen.
+// Listens to AuthProvider and routes to the correct screen.
 class _AuthGate extends StatelessWidget {
   const _AuthGate();
 
