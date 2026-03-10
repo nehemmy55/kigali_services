@@ -2,7 +2,7 @@ import 'package:firebase_core/firebase_core.dart' show FirebaseOptions;
 import 'package:flutter/foundation.dart'
     show defaultTargetPlatform, kIsWeb, TargetPlatform;
 
-// Import local config - this file should be in .gitignore
+
 import 'config/local_config.dart';
 
 class DefaultFirebaseOptions {
@@ -31,7 +31,7 @@ class DefaultFirebaseOptions {
     }
   }
 
-  // Firebase config - loaded from local_config.dart
+  // Firebase config loaded from local_config.dart
 
   static const FirebaseOptions web = FirebaseOptions(
     apiKey: LocalConfig.webApiKey,
