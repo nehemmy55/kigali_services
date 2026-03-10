@@ -8,28 +8,12 @@ import 'providers/interaction_provider.dart';
 import 'screens/auth/login_screen.dart';
 import 'screens/home_shell.dart';
 import 'screens/auth/verify_email_screen.dart';
-import 'services/mock_data_service.dart';
-import 'package:google_maps_flutter_android/google_maps_flutter_android.dart';
-import 'package:google_maps_flutter_platform_interface/google_maps_flutter_platform_interface.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
-  // Initialize Google Maps for Android
-  final GoogleMapsFlutterPlatform mapsImplementation =
-      GoogleMapsFlutterPlatform.instance;
-  if (mapsImplementation is GoogleMapsFlutterAndroid) {
-    mapsImplementation.useAndroidViewSurface = false;
-  }
-
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
-  );
-
-  // Populate mock data if database is empty
-  await MockDataService.populateMockData(
-    FirebaseFirestore.instance,
   );
 
   runApp(const KigaliServicesApp());
@@ -52,10 +36,9 @@ class KigaliServicesApp extends StatelessWidget {
         theme: ThemeData(
           useMaterial3: true,
           brightness: Brightness.dark,
-          scaffoldBackgroundColor:
-              const Color(0xFF0D1B2A), // Dark blue background
+          scaffoldBackgroundColor: const Color(0xFF0D1B2A),
           colorScheme: ColorScheme.fromSeed(
-            seedColor: const Color(0xFF005A9C), // Kigali blue
+            seedColor: const Color(0xFF005A9C),
             brightness: Brightness.dark,
           ),
           fontFamily: 'Roboto',
@@ -67,7 +50,7 @@ class KigaliServicesApp extends StatelessWidget {
           ),
           cardTheme: CardThemeData(
             elevation: 1,
-            color: const Color(0xFF1B263B), // Dark blue card
+            color: const Color(0xFF1B263B),
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(16),
             ),
@@ -92,7 +75,7 @@ class KigaliServicesApp extends StatelessWidget {
   }
 }
 
-/// Listens to [AuthProvider] and routes to the correct screen.
+// Listens to AuthProvider and routes to the correct screen.
 class _AuthGate extends StatelessWidget {
   const _AuthGate();
 

@@ -1,0 +1,8 @@
+/android/*
+/macos/*
+/linux/*
+/build/*
+/ios/*
+/windows/*
+.iml*
+.env

@@ -145,9 +145,8 @@ class ListingProvider extends ChangeNotifier {
     _myListings = [];
   }
 
-  // ---------------------------------------------------------------------------
   // Search & Filter
-  // ---------------------------------------------------------------------------
+
   void setSearchQuery(String query) {
     _searchQuery = query;
     notifyListeners();
@@ -164,9 +163,8 @@ class ListingProvider extends ChangeNotifier {
     notifyListeners();
   }
 
-  // ---------------------------------------------------------------------------
   // CRUD
-  // ---------------------------------------------------------------------------
+
   Future<bool> addListing(ListingModel listing) async {
     _setLoading(true);
     try {
@@ -203,9 +201,6 @@ class ListingProvider extends ChangeNotifier {
     }
   }
 
-  // ---------------------------------------------------------------------------
-  // Helpers
-  // ---------------------------------------------------------------------------
   void _setLoading(bool value) {
     _isLoading = value;
     _errorMessage = null;

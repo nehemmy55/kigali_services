@@ -47,12 +47,10 @@ class ListingCard extends StatelessWidget {
               ),
               const SizedBox(width: 12),
 
-              // Content
               Expanded(
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    // Name and category tag
                     Row(
                       children: [
                         Expanded(
@@ -101,7 +99,6 @@ class ListingCard extends StatelessWidget {
                     ),
                     const SizedBox(height: 6),
 
-                    // Address
                     Row(
                       children: [
                         Icon(
@@ -128,7 +125,6 @@ class ListingCard extends StatelessWidget {
                     // Rating, distance, and contact
                     Row(
                       children: [
-                        // Rating stars
                         RatingBar.builder(
                           initialRating: rating,
                           minRating: 0,
@@ -151,8 +147,6 @@ class ListingCard extends StatelessWidget {
                               .labelSmall
                               ?.copyWith(color: Colors.grey[600]),
                         ),
-
-                        // Distance
                         if (showDistance && listing.distanceKm != null) ...[
                           const SizedBox(width: 12),
                           Container(
@@ -183,9 +177,7 @@ class ListingCard extends StatelessWidget {
                             ),
                           ),
                         ],
-
                         const Spacer(),
-                        // Contact icon
                         if (listing.contactNumber.isNotEmpty)
                           Icon(
                             Icons.phone_outlined,
@@ -198,7 +190,6 @@ class ListingCard extends StatelessWidget {
                 ),
               ),
 
-              // Trailing arrow
               const SizedBox(width: 8),
               Icon(
                 Icons.arrow_forward_ios,

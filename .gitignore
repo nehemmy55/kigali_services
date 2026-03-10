@@ -17,17 +17,16 @@ migrate_working_dir/
 *.ipr
 *.iws
 .idea/
-
-# The .vscode folder contains launch configuration and tasks you configure in
-# VS Code which you may wish to be included in version control, so this line
-# is commented out by default.
-#.vscode/
+*.vsix
+# VS Code related
+.vscode/
 
 # Flutter/Dart/Pub related
 **/doc/api/
 **/ios/Flutter/.last_build_id
 .dart_tool/
 .flutter-plugins-dependencies
+.flutter-plugins
 .pub-cache/
 .pub/
 /build/
@@ -43,3 +42,63 @@ app.*.map.json
 /android/app/debug
 /android/app/profile
 /android/app/release
+
+# Firebase related
+
+google-services.json
+app/google-services.json
+
+# Temporary files
+temp.dart
+
+# Generated files
+*.g.dart
+*.freezed.dart
+
+# macOS
+**/.DS_Store
+**/*.xcuserstate
+**/*.xcuserdatad
+
+# Linux
+**/.directory
+
+# Windows
+**/.vs
+**/*.suo
+**/*.user
+**/*.userosscache
+**/*.sln.docstates
+
+# Flutter specific build artifacts
+**/flutter_*.png
+**/flutter_*.jpg
+**/flutter_*.jpeg
+**/flutter_*.gif
+**/flutter_*.webp
+**/flutter_*.svg
+
+# Packages
+*.pkg
+
+# CocoaPods
+**/Pods/
+
+
+.env
+.env.local
+.env.*.local
+
+# Testing
+**/coverage/
+**/.testCoverage/
+
+# IDE
+.idea/
+.vscode/
+*.code-workspace
+*.swp
+*.swo
+*~
+/config/local_config.dart
+lib/firebase_options.dart
